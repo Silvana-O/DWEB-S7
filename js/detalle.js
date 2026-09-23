@@ -16,30 +16,32 @@ const dias = document.querySelector("#dias");
 const horarios = document.querySelector("#horarios");
 
 // TODO 2: reemplazá el texto vacío por window.location.search.
-const parametros = new URLSearchParams("");
+const parametros = new URLSearchParams(window.location.search);
 
 // TODO 3: obtené el valor del parámetro "id" mediante get().
-const idPelicula = "";
+const idPelicula = parametros.get("id");
 
 // TODO 4: utilizá find() para buscar la película correspondiente.
-const peliculaSeleccionada = null;
+const peliculaSeleccionada = peliculas.find(pelicula => pelicula.id === idPelicula);
 
 function mostrarDetalle(pelicula) {
   // TODO 5: completá el contenido utilizando las propiedades de pelicula.
-  imagen.src = "";
-  imagen.alt = "";
-  titulo.textContent = "";
-  genero.textContent = "";
-  clasificacion.textContent = "";
-  formatos.textContent = "";
-  sinopsis.textContent = "";
-  director.textContent = "";
-  reparto.textContent = "";
-  duracion.textContent = "";
-  idioma.textContent = "";
-  pais.textContent = "";
-  dias.textContent = "";
-  horarios.innerHTML = "";
+  imagen.src = pelicula.imagen;
+  imagen.alt = pelicula.titulo;
+  titulo.textContent = pelicula.titulo;
+  genero.textContent = pelicula.genero;
+  clasificacion.textContent = pelicula.clasificacion;
+  formatos.textContent = pelicula.formatos.join(" . ");
+  sinopsis.textContent = pelicula.sinopsis;
+  director.textContent = pelicula.director;
+  reparto.textContent = pelicula.reparto.join(", ");
+  duracion.textContent = pelicula.duracion;
+  idioma.textContent = pelicula.idioma;
+  pais.textContent = pelicula.pais;
+  dias.textContent = pelicula.dias;
+  horarios.innerHTML = pelicula.horarios
+    .map(horario => `<span class="horario">${horario}</span>`)
+    .join("");
 
   contenedorDetalle.classList.remove("d-none");
 }

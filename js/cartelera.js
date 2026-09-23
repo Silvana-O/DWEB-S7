@@ -33,7 +33,7 @@ function mostrarPeliculas(listaPeliculas) {
 
     // TODO 1: reemplazá "#" por la dirección detalle.html?id=...
     // El valor del id debe obtenerse desde pelicula.id.
-    enlaceDetalle.href = "#";
+    enlaceDetalle.href = `detalle.html?id=${pelicula.id}`;
 
     columna.appendChild(tarjeta);
     contenedorCartelera.appendChild(columna);
